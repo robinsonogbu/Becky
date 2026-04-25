@@ -662,7 +662,7 @@
                                     <span class="secondary-color d-block f-700">Contact Me</span>
                                     <h5 class="f-700 mb-25 mt-25">Write Me A Message</h5>
 
-                                    <form action="https://api.web3forms.com/submit" method="POST">
+                                    <form  d="contactForm" method="POST">
                                         <input type="hidden" name="access_key" value="7f2ee837-5007-4d07-8f3e-757a1194fc13">
                                         <input type="hidden" name="redirect" value="https://karenlynnechess.com">
                                         <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
@@ -810,6 +810,26 @@
         <script src="js/ajax-formed.js"></script>
         <script src="js/jquery.meanmenu.min.js"></script>
         <script src="js/main.js"></script>
+        <script>
+document.getElementById('contactForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  await fetch('https://backend-4tkf.onrender.com/signUp', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      fullName: document.getElementById('inputName').value,
+      email: document.getElementById('inputEmail').value,
+      phoneNumber: document.getElementById('inputPhone').value,
+      location: document.getElementById('inputLocation').value,
+      time: document.getElementById('inputTime').value,
+      date: document.getElementById('inputDate').value,
+      timezone: document.getElementById('inputTimeZone').value,
+      message: document.getElementById('inputMessage').value,
+    })
+  });
+  alert('Message sent!');
+});
+</script>
 
 
     
